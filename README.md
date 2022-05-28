@@ -1,6 +1,7 @@
 Chapter 09 - Forms in Vue JS
 
 - Class 01: Create a project in Vue JS
+- Class 02: Manipulation od forms in Vue JS
 
 ## Technologies used
 
