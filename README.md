@@ -3,7 +3,8 @@ Chapter 09 - Forms in Vue JS
 - Class 01: Create a project in Vue JS
 - Class 02: Manipulation of forms in Vue JS
 - Class 03: Multiline TextArea in Vue JS
-- Class 04: install and configure Vee Validate in Vue JS
+- Class 04: Install and configure Vee Validate in Vue JS
+- Class 05: Field validation with Vee Validate in Vue JS
 
 ## Technologies used
 
