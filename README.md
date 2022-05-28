@@ -1,6 +1,6 @@
 <p align="center"><img src="https://www.vectorlogo.zone/logos/vuejs/vuejs-ar21.svg" width="200px"></p>
 
-<b>Chapter 09 - Forms in Vue JS</b>
+<h2>Chapter 09 - Forms in Vue JS</h2>
 
 - Class 01: Create a project in Vue JS
 - Class 02: Manipulation of forms in Vue JS
