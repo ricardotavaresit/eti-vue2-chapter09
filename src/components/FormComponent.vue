@@ -1,19 +1,28 @@
 <template>
   <div>
-    <form>
-      <input type="text" placeholder="Name" v-model="userData.name" />
-      {{ userData.name }}
-      <hr />
-      <input
-        type="email"
-        name="email"
-        v-validate="'required|email'"
-        placeholder="E-Mail"
-        v-model="userData.email"
-      />
-
-     <!--  <div v-bind:class="{ 'is-danger': errors.has('email') }"> -->
-      <div v-bind:class=" errors.has('email') ?  'is-danger' : 'is-success'">
+    <form v-on:submit.prevent="saveData">
+      <div v-bind:class="{ 'is-danger': errors.has('name') }">
+        <input
+          name="name"
+          v-validate="'required|min:2|max:10'"
+          type="text"
+          placeholder="Name"
+          v-model="userData.name"
+        />
+        <p v-show="errors.has('name')" class="help is-danger">
+          {{ errors.first("name") }}
+        </p>
+        <hr />
+        <input
+          type="email"
+          name="email"
+          v-validate="'required|email'"
+          placeholder="E-Mail"
+          v-model="userData.email"
+        />
+      </div>
+      <!--  <div v-bind:class="{ 'is-danger': errors.has('email') }"> -->
+      <div v-bind:class="errors.has('email') ? 'is-danger' : 'is-success'">
         <span v-show="errors.has('email')" class="help is-danger">{{
           errors.first("email")
         }}</span>
@@ -50,6 +59,10 @@
       <hr />
       <button typ="submit">Send</button>
     </form>
+
+    <div v-if="isSubmited">
+      {{ userData }}
+    </div>
   </div>
 </template>
 
@@ -66,30 +79,39 @@ export default {
       },
       terms: true,
       description: "",
+      isSubmited: false,
     };
+  },
+  methods: {
+    saveData() {
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          this.isSubmited = true;
+          return;
+        }
+      });
+    },
   },
 };
 </script>
 
 
   <style scoped>
-  .text-formate {
-    white-space: pre;
-  }
+.text-formate {
+  white-space: pre;
+}
 
-  .is-danger {
-    border: 1px solid rgb(179, 11, 11);
-  }
-  .is-danger p {
-    color: rgb(179, 11, 11);
-  }
+.is-danger {
+  border: 1px solid rgb(179, 11, 11);
+}
+.is-danger p {
+  color: rgb(179, 11, 11);
+}
 
-
-  .is-success {
-    border: 1px solid rgb(12, 123, 27);
-  }
-  .is-success p {
-    color: rgb(12, 123, 27);
-  }
-
+.is-success {
+  border: 1px solid rgb(12, 123, 27);
+}
+.is-success p {
+  color: rgb(12, 123, 27);
+}
 </style>
