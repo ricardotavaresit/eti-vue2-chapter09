@@ -22,6 +22,14 @@
       <input type="checkbox" id="agree" v-model="userData.terms">
       <hr>
       <textarea cols="30" rows="10" v-model="userData.description"></textarea>
+      <p>Version 1</p>
+      <div class="text-formate">
+        {{userData.description}}
+      </div>
+       <p>Version 2</p>
+      <pre>
+        {{userData.description}}
+      </pre>
       <hr>
       <button typ="submit">Send</button>
     </form>
@@ -47,4 +55,11 @@ export default {
 }
 
 </script>
+
+
+  <style scoped>
+  .text-formate{
+    white-space: pre;
+  }
+</style>
 
